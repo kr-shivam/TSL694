@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -181,7 +182,7 @@ public class FlipkartMobileDDT {
 
 	}
 
-	private void functional(List<WebElement> ls) {
+	private void functional(List<WebElement> ls) throws InterruptedException {
 
 		// delimiter for Rupee symbol
 		String delim = "\u20B9";
@@ -200,12 +201,25 @@ public class FlipkartMobileDDT {
 		 * */
 		
 		for (WebElement webElement : ls) {
-
+			
 			String x = webElement.findElement(By.className("_1uv9Cb"))
 					.getText();
 
-			// if the extra details are sent with price
-			if (x.length() > 8) {
+			// if the product displays, price not available
+			// go to the product page and fetch the price.
+			if(x.equals("Price: Not Available")){
+				webElement.click();
+				webdriver.switchTo().window((String) (webdriver.getWindowHandles().toArray()[1]));
+				Thread.sleep(2000);
+				x = webdriver.findElement(By.className("_1uv9Cb")).getText();
+				x = x.replace("\u20B9", "");
+				x = x.replace(",", "");
+				webdriver.close();
+				webdriver.switchTo().window((String) (webdriver.getWindowHandles().toArray()[0]));
+				Thread.sleep(2000);
+				
+				// if the extra details are sent with price
+			}else if (x.length() > 8) {
 				String[] tempo = x.split(delim);
 				x = tempo[1];
 				x = x.replace(",", "");
