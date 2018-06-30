@@ -1,0 +1,16 @@
+************ HOMEWORK STARTS HERE **********
+
+How to upload a file in selenium without sendKeys() function?
+
+-> 2 solutions:
+
+>>> We can copy the path of file in clipboard in java.
+    Using Robot class, press ctrl+V for sending the path of file to be uploaded
+
+>>> We can use Autoit tool for developing a script and compiling it
+    Autoit tool detects the image upload request window
+    Then, using Java, we can execute that script(using Runtime) when the upload image pop-up window occurs
+
+
+
+************ HOMEWORK ENDS HERE **********

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [28JuneTestSuite]">
+  <test name="2(failed)">
+    <classes>
+      <class name="softpac.FD_Joint_Executor">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- softpac.FD_Joint_Executor -->
+      <class name="softpac.FD_Single_Executor">
+        <methods>
+          <include name="setUp"/>
+          <include name="testLogin"/>
+        </methods>
+      </class> <!-- softpac.FD_Single_Executor -->
+    </classes>
+  </test> <!-- 2(failed) -->
+</suite> <!-- Failed suite [28JuneTestSuite] -->
