@@ -18,6 +18,7 @@ public class GoogleTestNg {
 
 		webdriver.findElement(By.className("gsfi")).sendKeys("Selenium Software");  //find by className
 		webdriver.findElement(By.name("btnK")).click();
+		
 	}
 
 	@BeforeTest

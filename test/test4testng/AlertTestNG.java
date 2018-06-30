@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
@@ -16,9 +17,12 @@ public class AlertTestNG {
 	WebDriver webdriver; 
   @Test
   public void f() {
+	
 		// fail("Not yet implemented");
 		By clickobj = By.xpath("//*[@id=\"content\"]/div/ul/li[1]/button");
+		webdriver.findElement(By.xpath(""));
 
+		
 		webdriver.findElement(clickobj).click();
 		webdriver.switchTo().alert().accept();
 		By resultobj = By.id("result");

@@ -1,0 +1,57 @@
+package test4testng;
+
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+
+public class LogInTestPOM_Exec {
+ 
+WebDriver driver;
+@BeforeTest
+  public void beforeTest() {
+System.setProperty("webdriver.chrome.driver", "test\\resources\\drivers\\chromedriver.exe");
+driver = new ChromeDriver();
+driver.get("http://205.147.102.59:9001/");
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+  }
+ 
+  @Test
+  public void logintest() {
+  LoginLiveTextilePOM loginpage = new LoginLiveTextilePOM(driver);
+  driver.findElement(By.cssSelector("#show_login")).click();
+  
+  // LOG IN AS SUPPLIER
+  loginpage.login("dhunharshjain@gmail.com", "Gmail@123");
+  
+  // LOG IN AS BUYER
+  //loginpage.login("rajeshb421@gmail.com", ".adgjmpt");
+  loginpage.checkIfErrorExists();
+  
+  }
+ 
+  /*@Test
+  public void logintestPF() {
+  LoginLiveTextilePOM loginpageF = new LoginLiveTextilePOM(driver);
+  driver.findElement(By.cssSelector("#show_login")).click();
+  //loginpageF.login("narendra@qaagility.com", "test@123");
+  loginpageF.login("narendra", "test@123");
+  loginpageF.login("narendra@qaagility.com", "test@123");
+  loginpageF.checkIfErrorExists();
+  loginpageF.login("narendra.gupta@qaagility.com", "test@123");
+  loginpageF.checkIfErrorExists();
+  }*/
+ 
+  @AfterTest
+  public void afterTest() {
+  //driver.quit();
+  }
+
+}
